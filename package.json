@@ -1,0 +1,27 @@
+{
+  "name": "javascript-lessons",
+  "version": "1.0.0",
+  "description": "Lessons to learn JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intelliware-coe-web/javascript-lessons.git"
+  },
+  "keywords": [
+    "javascript",
+    "testing",
+    "jasmine"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/intelliware-coe-web/javascript-lessons/issues"
+  },
+  "homepage": "https://github.com/intelliware-coe-web/javascript-lessons#readme",
+  "devDependencies": {
+    "jasmine": "latest"
+  }
+}
