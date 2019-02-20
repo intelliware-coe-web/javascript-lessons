@@ -26,14 +26,14 @@ describe('ES6 generators', () => {
     })
   })
 
-  describe('Generator', () => {
+  describe('Forcing behaviour', () => {
     const generator = function* () {
       yield 1
       yield 2
       yield 3
     }
 
-    it('should return ??? when return is called', () => {
+    it('should return the external value with return', () => {
       const actual = generator()
       actual.next()
       expect(actual.return('foo')).toEqual(FILL_IN_THE_BLANK)
@@ -44,6 +44,28 @@ describe('ES6 generators', () => {
       actual.next()
       actual.return('foo')
       expect(actual.next()).toEqual(FILL_IN_THE_BLANK)
+    })
+
+    it('should throw the external exception with throw', () => {
+      const actual = generator()
+      actual.next()
+      expect(() => actual.throw('foo')).toThrowError('foo')
+      expect(actual.next()).toEqual(FILL_IN_THE_BLANK)
+    })
+  })
+
+  describe('Challenge: create a generator function that will create a range of numbers from min to max', () => {
+    function* range(min, max) {
+      // FILL_IN_THE_BLANK
+    }
+
+    it('should create an infinite range', () => {
+      const min = 0
+      const max = 10
+      const actual = range(min, max)
+      for (let i = min; i < max; i++) {
+        expect(actual.next().value).toEqual(i)
+      }
     })
   })
 
