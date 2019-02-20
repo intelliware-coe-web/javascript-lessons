@@ -69,4 +69,20 @@ describe('ES6 generators', () => {
     })
   })
 
+  describe('Passing message in', () => {
+    const TRY_PUTTING_A_VALUE_HERE = undefined
+
+    function* inputOutput() {
+      const x = yield
+      const y = yield
+      yield x + y
+    }
+
+    it('should return the sum of the inputs', () => {
+      const actual = inputOutput()
+      expect(actual.next(TRY_PUTTING_A_VALUE_HERE)).toEqual({value: undefined, done: false})
+      expect(actual.next(TRY_PUTTING_A_VALUE_HERE)).toEqual({value: undefined, done: false})
+      expect(actual.next()).toEqual({value: FILL_IN_THE_BLANK, done: false})
+    })
+  })
 })
