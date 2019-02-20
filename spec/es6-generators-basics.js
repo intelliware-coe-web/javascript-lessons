@@ -1,6 +1,4 @@
 describe('ES6 generators', () => {
-  const FILL_IN_THE_BLANK = null
-
   describe('introduction', () => {
     const fixture = function* () {
       yield 'Hello'
@@ -12,51 +10,57 @@ describe('ES6 generators', () => {
       expect(actual.next()).toEqual({value: 'Hello', done: false})
     })
 
-    it('should return ??? when called twice', () => {
+    it('should return the second value when called twice', () => {
       const actual = fixture()
       actual.next()
-      expect(actual.next()).toEqual(FILL_IN_THE_BLANK)
+      expect(actual.next()).toEqual({value: 'World', done: false})
     })
 
-    it('should return ??? when called thrice', () => {
+    it('should return the done flag when called thrice', () => {
       const actual = fixture()
       actual.next()
       actual.next()
-      expect(actual.next()).toEqual(FILL_IN_THE_BLANK)
+      expect(actual.next()).toEqual({value: undefined, done: true})
     })
   })
 
   describe('Forcing behaviour', () => {
     const generator = function* () {
-      yield 1
-      yield 2
-      yield 3
+      try {
+        yield 1
+        yield 2
+        yield 3
+      } catch (e) {
+        throw 'Oops'
+      }
     }
 
     it('should return the external value with return', () => {
       const actual = generator()
       actual.next()
-      expect(actual.return('foo')).toEqual(FILL_IN_THE_BLANK)
+      expect(actual.return('foo')).toEqual({value: 'foo', done: true})
     })
 
-    it('should return ??? when return is called', () => {
+    it('should return done when next is called after return', () => {
       const actual = generator()
       actual.next()
       actual.return('foo')
-      expect(actual.next()).toEqual(FILL_IN_THE_BLANK)
+      expect(actual.next()).toEqual({value: undefined, done: true})
     })
 
     it('should throw the external exception with throw', () => {
       const actual = generator()
       actual.next()
-      expect(() => actual.throw('foo')).toThrowError('foo')
-      expect(actual.next()).toEqual(FILL_IN_THE_BLANK)
+      expect(() => actual.throw('foo')).toThrow('Oops')
+      expect(actual.next()).toEqual({value: undefined, done: true})
     })
   })
 
   describe('Challenge: create a generator function that will create a range of numbers from min to max', () => {
     function* range(min, max) {
-      // FILL_IN_THE_BLANK
+      for (let i = min; i < max; i++) {
+        yield i
+      }
     }
 
     it('should create an infinite range', () => {
