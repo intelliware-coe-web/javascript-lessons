@@ -14,6 +14,7 @@ describe('Advanced', () => {
 
     it('should sum 1 + 2 + 3 + 4 values', () => {
       const actual = sum4()
+      actual.next()
       // fill in the blanks here
       expect(actual.next().value).toEqual(10)
     })
