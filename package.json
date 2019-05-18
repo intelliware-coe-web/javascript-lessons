@@ -23,8 +23,8 @@
   },
   "homepage": "https://github.com/intelliware-coe-web/javascript-lessons#readme",
   "devDependencies": {
-    "eslint": "^5.13.0",
+    "eslint": "^5.16.0",
     "eslint-plugin-jasmine": "^2.10.1",
-    "jasmine": "latest"
+    "jasmine": "^3.4.0"
   }
 }
